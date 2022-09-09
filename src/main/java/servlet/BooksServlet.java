@@ -19,9 +19,4 @@ public class BooksServlet extends HttpServlet {
         req.setAttribute("books", bookManager.showBooks());
         req.getRequestDispatcher("/WEB-INF/books.jsp").forward(req, resp);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-    }
 }

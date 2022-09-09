@@ -1,3 +1,4 @@
+<%@ page import="model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -5,12 +6,25 @@
 </head>
 <body>
 
-<div style="display: flex; justify-content: space-between; width: 600px">
-    <a style="text-decoration: none" href="${pageContext.request.contextPath}/author/add">Add an author</a>
-    <a style="text-decoration: none" href="${pageContext.request.contextPath}/authors">Show authors</a>
-    <a style="text-decoration: none" href="${pageContext.request.contextPath}/book/add">Add a book</a>
-    <a style="text-decoration: none" href="${pageContext.request.contextPath}/books">Show books</a>
-</div>
+<%
+    User user = (User) session.getAttribute("user");
+%>
+
+<%if (user != null) {%>
+
+<div><a style="text-decoration: none" href="/author/add">Add an author</a></div>
+<div><a style="text-decoration: none" href="/book/add">Add a book</a></div>
+<div><a href="/logout">Logout</a></div>
+
+<%} else {%>
+
+<div><a href="/login">Login</a></div>
+<div><a href="/register">Register</a></div>
+
+<%}%>
+
+<div><a style="text-decoration: none" href="/authors">Show authors</a></div>
+<div><a style="text-decoration: none" href="/books">Show books</a></div>
 
 </body>
 </html>
